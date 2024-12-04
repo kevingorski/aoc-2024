@@ -45,7 +45,7 @@ async function readInput() {
     totalDistance += Math.abs(leftSorted[i] - rightSorted[i]);
   }
 
-  console.log( `Total distance: ${totalDistance}` );
+  console.log(`Total distance: ${totalDistance}`);
 }
 
 readInput();

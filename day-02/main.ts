@@ -31,7 +31,6 @@ async function readInput() {
 
     const isSafe = differences.every(difference => difference > 0 && difference <= 3) || 
       differences.every(difference => difference < 0 && difference >= -3);
-    // console.log(`${levels.join(", ")}: is it safe? ${isSafe}`);
 
     safeCount += isSafe ? 1 : 0;
   }

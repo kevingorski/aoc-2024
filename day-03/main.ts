@@ -5,7 +5,7 @@ Scan the corrupted memory for uncorrupted mul instructions.
 It seems like the goal of the program is just to multiply some numbers.
 It does that with instructions like mul(X,Y), where X and Y are each 1-3 digit numbers.
 
-However, because the program's memory has been corrupted, there are also many invalid 
+However, because the program's memory has been corrupted, there are also many invalid
 characters that should be ignored, even if they look like part of a mul instruction.
 Sequences like mul(4*, mul(6,9!, ?(12,34), or mul ( 2 , 4 ) do nothing.
 

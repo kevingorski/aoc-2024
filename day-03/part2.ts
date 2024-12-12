@@ -14,7 +14,8 @@ async function readInput() {
   const input = await readAll(Deno.stdin);
   const text = new TextDecoder().decode(input);
   const instructions = text.matchAll(
-    /(?:mul\((\d{1,3}),(\d{1,3})\))|(?:do\(\))|(?:don't\(\))/g);
+    /(?:mul\((\d{1,3}),(\d{1,3})\))|(?:do\(\))|(?:don't\(\))/g,
+  );
   let isEnabled = true;
   let total = 0;
 

@@ -1,4 +1,5 @@
 {
   "imports": { "@std/io": "jsr:@std/io@^0.225.0" },
-  "lock": false
+  "lock": false,
+  "workspace": ["./day-*"]
 }

@@ -8,7 +8,6 @@ What do you get if you add up the middle page numbers after correctly ordering j
 
 import { readAll } from "jsr:@std/io/read-all";
 
-
 async function readInput() {
   const input = await readAll(Deno.stdin);
   const text = new TextDecoder().decode(input);
@@ -17,7 +16,9 @@ async function readInput() {
   let total = 0;
 
   // Parse the rules
-  const rulePairs = rulesText.split("\n").map((line) => line.split("|").map((value) => Number(value)));
+  const rulePairs = rulesText.split("\n").map((line) =>
+    line.split("|").map((value) => Number(value))
+  );
   const rules = new Map<number, Set<number>>();
 
   for (const [first, second] of rulePairs) {
@@ -27,17 +28,19 @@ async function readInput() {
       rules.set(first, new Set([second]));
     }
   }
-  
+
   // Parse the page lists
-  const pageLists = pageListsText.split("\n").map((line) => line.split(",").map((value) => Number(value)));
-  
+  const pageLists = pageListsText.split("\n").map((line) =>
+    line.split(",").map((value) => Number(value))
+  );
+
   for (const pageList of pageLists) {
     const seenPages = new Set<number>();
     let corrected: number[] | null = null;
 
     // finding first, has second been seen already? -> fix
     for (const value of pageList) {
-      pageList.with
+      pageList.with;
       if (rules.has(value)) {
         const seenAndRuleBreaking = rules.get(value)!.intersection(seenPages);
         if (seenAndRuleBreaking.size > 0) {
@@ -46,15 +49,28 @@ async function readInput() {
           }
           // now correct
           const incorrectPageNumberIndex = corrected.indexOf(value);
-          const firstConflictingPageNumberIndex = 
-            Math.min(
-              ...seenAndRuleBreaking.values().map(seenPageNumber => corrected!.indexOf(seenPageNumber)));
-          const deleteCount = incorrectPageNumberIndex - firstConflictingPageNumberIndex + 1;
-          const replacement = [value, ...corrected.slice(firstConflictingPageNumberIndex, incorrectPageNumberIndex)];
-          corrected.splice(firstConflictingPageNumberIndex, deleteCount, ...replacement);
+          const firstConflictingPageNumberIndex = Math.min(
+            ...seenAndRuleBreaking.values().map((seenPageNumber) =>
+              corrected!.indexOf(seenPageNumber)
+            ),
+          );
+          const deleteCount = incorrectPageNumberIndex -
+            firstConflictingPageNumberIndex + 1;
+          const replacement = [
+            value,
+            ...corrected.slice(
+              firstConflictingPageNumberIndex,
+              incorrectPageNumberIndex,
+            ),
+          ];
+          corrected.splice(
+            firstConflictingPageNumberIndex,
+            deleteCount,
+            ...replacement,
+          );
         }
       }
-      seenPages.add(value)
+      seenPages.add(value);
     }
 
     if (corrected !== null) {
